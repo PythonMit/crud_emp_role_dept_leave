@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Employee>
+
+
+<div>
+    <a asp-action="Create">Create new Employee</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Role</th>
+        <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+     
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Salary</td>
+                <td>@item.Role.RoleName</td>
+                <td>@item.Department.Deptname</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a asp-action="CreateLeave" asp-route-id="@item.Id">Create Leave </a>
+                </td>
+                <td>@ViewBag.testdata</td>
+            </tr>
+        }
+    </tbody>
+</table>
